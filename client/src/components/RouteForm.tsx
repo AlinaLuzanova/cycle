@@ -43,7 +43,7 @@ const VoyageForm: FC = () => {
       if (res.id) {
         // event.target.reset();
 
-        console.log("Route create!");
+        window.location.href = "/";
       }
     } catch (err) {
       console.log(err);
