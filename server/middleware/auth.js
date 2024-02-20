@@ -11,12 +11,7 @@ const getUser = async (req, res, next) => {
   if (req.session.userId) {
     const user = await User.findByPk(req.session.userId);
     if (user.id) {
-      res.locals.user = {
-        name: user.name,
-        email: user.email,
-        id: user.id,
-        isseller: user.isseller,
-      };
+      res.locals.user = user;
     } else {
       res.status(500).redirect('/');
     }
