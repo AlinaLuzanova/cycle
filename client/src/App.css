@@ -1,7 +1,6 @@
 :root{
-    --darkblue: #012764;
+    --darkblue: #003488;
 }
 body{
-    background: linear-gradient(to top, black, black, black, var(--darkblue));
-
+    background: linear-gradient(to top, black, black, black, black, var(--darkblue));
 }
