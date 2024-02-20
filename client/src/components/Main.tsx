@@ -36,6 +36,11 @@ const Main: React.FC = () => {
             <h1>Our latest routes</h1>
             <h3>explore world with OnRoad</h3>
             <div className={styles.content}>
+                <div className={styles.upperContent}>
+                    <h3>Find your next adventure!</h3>
+                    <hr/>
+                </div>
+                <div className={styles.mainContent}>
                 <div className={styles.sidebar}>
                     часть Олега
                 </div>
@@ -48,6 +53,7 @@ const Main: React.FC = () => {
                     ))}
                 </ul>
             </div>
+                </div>
         </div>
         </div>
     );

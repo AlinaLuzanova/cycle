@@ -1,7 +1,7 @@
 body{
     display: flex;
     flex-direction: column;
-    padding-block: 13vh;
+    padding-top: 13vh;
 }
 .main{
     display: flex;
@@ -14,28 +14,36 @@ body{
     display: flex;
     justify-content: space-between;
     width: 90vw;
-    -webkit-box-shadow:0px 0px 40px 10px rgba(255, 255, 255, 0.5);
-    -moz-box-shadow: 0px 0px 40px 10px rgb(255, 255, 255, 0.5);
-    box-shadow: 0px 0px 40px 10px rgb(255, 255, 255, 0.5);
-    background-color: rgba(0, 0, 0, 0.58);
+    flex-direction: column;
+    -webkit-box-shadow:0px 0px 40px 40px rgb(0, 33, 82);
+    -moz-box-shadow: 0px 0px 40px 40px rgb(0, 33, 82);
+    box-shadow: 0px 0px 40px 40px rgb(0, 33, 82);
+    background: linear-gradient(to top, black, black, black,rgb(0, 33, 82),rgb(0, 33, 82) );
     border-radius: 40px;
-    margin-top: 3vh;
+    margin-top: 5vh;
     height: fit-content;
 }
+.mainContent{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 .sidebar{
-    width: 30%;
+    width: 35%;
     height: inherit;
     background-color: white;
     color: black;
 }
 .routesContainer{
-    padding-left: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5%;
 }
 .routesContainer ul{
     display: flex;
-
     flex-wrap: wrap;
-    gap:5%;
+    gap: 5%;
     list-style-type: none;
 }
 
@@ -49,22 +57,16 @@ body{
     align-items: center;
 }
 
-
-
-.courseList ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap:  3%;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
+.upperContent{
+    width: 100%;
+    background-color: rgb(0, 33, 82);
+    color: white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-bottom: 1em;
+    height: fit-content;
+}
+.upperContent h3{
+    padding-left: 1%;
 }
 
-.courseList ul li {
-    flex:  0  0 calc(33.33% -  2%);
-    list-style-type: none;
-    box-sizing: border-box;
-    margin-bottom: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
