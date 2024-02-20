@@ -17,18 +17,19 @@ interface Route {
 const RouteCard: React.FC<{ route: Route }> = ({ route }) => {
     return (
         <div className={styles.routeCard}>
-            <Card sx={{ minWidth: 275, borderRadius: 10, boxShadow: 3, margin: 2, padding: 3 }}>
+            <Card sx={{ minWidth: 300, borderRadius: 10, margin: 2, padding: 3, maxWidth: 300 }}>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         {route.city}
+                        <br />
                     </Typography>
                     <Typography variant="h5" component="div">
                         {route.title}
+                        <br />
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         Start: {route.start}
-                    </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        <br />
                         Finish: {route.finish}
                     </Typography>
                     <Typography variant="body2">
