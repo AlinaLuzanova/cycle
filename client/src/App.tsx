@@ -1,15 +1,17 @@
 import RouteForm from "./components/RouteForm.tsx";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Main from "./components/Main.tsx";
+import Layout from "./components/Layout.tsx";
 
 function App() {
   return (
     <>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Main />} />
-        <Route path="/createroute" element={<RouteForm />} />
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Main />} />
+          <Route path="/createRoute" element={<RouteForm />} />
+        </Route>
+      </Routes>
     </>
   );
 }
