@@ -1,0 +1,11 @@
+.title_form {
+  text-align: center;
+  color: #fff;
+}
+
+.wrapper_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
