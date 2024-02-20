@@ -5,14 +5,14 @@ import Layout from "./components/Layout.tsx";
 
 function App() {
   return (
-      <>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/"  element={<Main />} />
-            <Route path="/createroute" element={<RouteForm />} />
-          </Route>
-        </Routes>
-      </>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Main />} />
+          <Route path="/createRoute" element={<RouteForm />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

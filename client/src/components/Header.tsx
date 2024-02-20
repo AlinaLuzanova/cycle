@@ -13,13 +13,27 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import styles from "../styles/Header.module.css";
-import { Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const pagesBefore = ["Sign in", "Sign up", "Routes", "Create Route"];
+interface Page {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  user: object;
+}
+
+const pagesBefore: Array<Page> = [
+  { name: "Sign in", href: "/" },
+  { name: "Sign up", href: "/" },
+  { name: "Routes", href: "/" },
+  { name: "Create Route", href: "/createRoute" },
+];
 const pagesAfter = ["Routes", "Logout"];
 const settings = ["Profile", "Logout"];
 
-function ResponsiveAppBar(props: object) {
+function ResponsiveAppBar(props: Props) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -62,7 +76,7 @@ function ResponsiveAppBar(props: object) {
                 textDecoration: "none",
               }}
             >
-              OnRoad
+              <Link to="/">OnRoad</Link>
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -101,8 +115,10 @@ function ResponsiveAppBar(props: object) {
                       </MenuItem>
                     ))
                   : pagesBefore.map((page) => (
-                      <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
+                      <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">
+                          <Link to={page.href}>{page.name}</Link>
+                        </Typography>
                       </MenuItem>
                     ))}
               </Menu>
@@ -129,11 +145,11 @@ function ResponsiveAppBar(props: object) {
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pagesBefore.map((page) => (
                 <Button
-                  key={page}
+                  key={page.name}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  {page}
+                  <Link to={page.href}>{page.name}</Link>
                 </Button>
               ))}
             </Box>
@@ -175,7 +191,6 @@ function ResponsiveAppBar(props: object) {
           </Toolbar>
         </Container>
       </AppBar>
-      <Outlet />
     </div>
   );
 }
