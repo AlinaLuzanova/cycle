@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from '../styles/Main.module.css';
 import RouteCard from "./RouteCard";
-
+import Spline from '@splinetool/react-spline';
 interface Route {
     id: number;
     title: string;
@@ -13,6 +13,11 @@ interface Route {
     user_id: number;
     rating:number;
 }
+interface User{
+    id:number;
+    login:string;
+}
+
 
 const Main: React.FC = () => {
     const [data, setData] = useState<Route[]>([]);
@@ -34,11 +39,14 @@ const Main: React.FC = () => {
     return (
         <div className={styles.main}>
             <h1>Our latest routes</h1>
+            <div className={styles.earth}>
+            <Spline scene="https://prod.spline.design/SS9q7mlzF7LmdE8f/scene.splinecode" />
+            </div>
             <h3>explore world with OnRoad</h3>
             <div className={styles.content}>
                 <div className={styles.upperContent}>
                     <h3>Find your next adventure!</h3>
-                    <hr/>
+                    <hr style={{height: '.4em', backgroundColor: 'white', borderRadius: '5px'}} />
                 </div>
                 <div className={styles.mainContent}>
                 <div className={styles.sidebar}>
@@ -48,7 +56,7 @@ const Main: React.FC = () => {
                 <ul>
                     {data.map((route) => (
                         <li key={route.id}>
-                            <RouteCard route={route}/>
+                            <RouteCard route={route} user={user}/>
                         </li>
                     ))}
                 </ul>
