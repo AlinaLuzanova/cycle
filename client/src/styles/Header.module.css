@@ -1,0 +1,10 @@
+.header{
+    position: fixed;
+    border-radius:  40px;
+    background-color: rgba(0, 0, 0, 0.58);
+    inset:4vh;
+    height: fit-content;
+}
+.toolbar{
+
+}
