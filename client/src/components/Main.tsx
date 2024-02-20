@@ -13,6 +13,10 @@ interface Route {
     user_id: number;
     rating:number;
 }
+interface User{
+    id:number;
+    login:string;
+}
 
 
 const Main: React.FC = () => {
@@ -52,7 +56,7 @@ const Main: React.FC = () => {
                 <ul>
                     {data.map((route) => (
                         <li key={route.id}>
-                            <RouteCard route={route}/>
+                            <RouteCard route={route} user={user}/>
                         </li>
                     ))}
                 </ul>
