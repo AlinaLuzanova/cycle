@@ -4,9 +4,11 @@ const router = require('express').Router();
 
 // const authViewRouter = require('./views/authView.routes'); // TODO
 const authApiRouter = require('./api/authApi.routes');
+const prefApiRouter = require('./api/pref.routes');
 
 // router.use('/', mainRouter); // TODO
 // router.use('/auth', authViewRouter); // TODO
 router.use('/api/auth', authApiRouter);
+router.use('/api/pref', prefApiRouter);
 
 module.exports = router;
