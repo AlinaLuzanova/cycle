@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Main from "./components/Main.tsx";
 import Layout from "./components/Layout.tsx";
 import Auth from "./components/Auth.tsx"
+import Login from "./components/Login.tsx"
 import "./App.css";
 import Profile from "./components/Profile.tsx";
 function App() {
@@ -13,6 +14,8 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/createRoute" element={<RouteForm />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Auth />} />
+          <Route path="/login" element ={<Login />} />
         </Route>
       </Routes>
     </>

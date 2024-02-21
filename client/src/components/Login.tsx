@@ -1,20 +1,18 @@
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface RegisterFormData {
+interface LoginFormData {
     name: string;
-    email: string;
     password: string;
 }
 
-interface RegisterFormProps {
-    onSubmit: (formData: RegisterFormData) => void;
+interface LoginFormProps {
+    onSubmit: (formData: LoginFormData) => void;
 }
 
-const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
-    const [formData, setFormData] = useState<RegisterFormData>({
+const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
+    const [formData, setFormData] = useState<LoginFormData>({
         name: '',
-        email: '',
         password: '',
     });
 
@@ -27,7 +25,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000/api/auth/register', {
+            const response = await fetch('http://localhost:3000/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -40,18 +38,17 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
             }
             
         } catch (error) {
-            console.error('Error signing up:', error);
+            console.error('Error login up:', error);
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-            <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
             <button type="submit"> Sign Up</button>
         </form>
     );
 }
 
-export default RegisterForm;
+export default LoginForm;
