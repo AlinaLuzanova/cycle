@@ -15,10 +15,10 @@ body{
     justify-content: space-between;
     width: 90vw;
     flex-direction: column;
-    -webkit-box-shadow:0px 0px 40px 40px rgb(0, 33, 82);
-    -moz-box-shadow: 0px 0px 40px 40px rgb(0, 33, 82);
-    box-shadow: 0px 0px 40px 40px rgb(0, 33, 82);
-    background: linear-gradient(to top, black, black, black,rgb(0, 33, 82),rgb(0, 33, 82) );
+    -webkit-box-shadow:0px 0px 100px 50px rgb(0, 33, 82);
+    -moz-box-shadow: 0px 0px 100px 50px rgb(0, 33, 82);
+    box-shadow: 0px 0px 100px 50px rgb(0, 33, 82);
+    background: linear-gradient(to top, black, black, black, black,rgb(0, 33, 82),rgb(0, 33, 82) );
     border-radius: 40px;
     margin-top: 5vh;
     height: fit-content;
@@ -53,8 +53,12 @@ body{
     box-sizing: border-box;
     margin-bottom: 2%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+}
+.routeCard{
+    display: flex;
+    justify-content: space-between;
 }
 
 .upperContent{
@@ -66,7 +70,22 @@ body{
     margin-bottom: 1em;
     height: fit-content;
 }
-.upperContent h3{
+.main h2{
+    padding-block: 0 4vh;
+    margin-block: 0;
+}
+.main h1{
+    padding: 0 ;
+    margin-block: 2vh  0;
+}
+.upperContent{
     padding-left: 1%;
 }
 
+.earth{
+    width: 400px;
+}
+.cardContainer{
+    display: flex;
+    justify-content: space-between;
+}
