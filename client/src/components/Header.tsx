@@ -24,21 +24,21 @@ interface Props {
   user: object;
 }
 const pagesBefore: Array<Page> = [
-  { name: "Sign in", link: "/register" },
-  { name: "Sign up", link: "/login" },
+  { name: "Sign in", link:  "/login"},
+  { name: "Sign up", link:  "/register"},
   { name: "Routes", link: "/" },
   { name: "Create Route", link: "/createRoute" }, //как будет аутентификация убрать это
     {name:"Profile", link:"/profile"}, //как будет аутентификация убрать это
 ];
 const pagesAfter : Array<Page> = [
     { name: "Routes", link: "/" },
-    { name: "Logout", link: "/logout" },
+    { name: "Logout", link: "/api/auth/logout" },
     { name: "Create Route", link: "/createRoute" }
 ]
 
 const settings = [
     {name: "Profile", link:"/profile"},
-    {name: "Logout", link: "/logout"}
+    {name: "Logout", link: "/api/auth/logout"}
 ];
 
 function ResponsiveAppBar(props: Props) {
