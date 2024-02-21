@@ -97,7 +97,7 @@ const RouteCard: React.FC<{ route: Route, user: User }> = ({ route, user }) => {
                     </div>
                 </CardContent>
                 <CardActions>
-                    <Link to={`/routes/${route.id}`}>Learn More</Link>
+                    <Link style={{color:'rgb(0, 33, 82)'}} to={`/routes/${route.id}`}>Learn More</Link>
                 </CardActions>
             </Card>
         </div>
