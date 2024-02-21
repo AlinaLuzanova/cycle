@@ -89,3 +89,13 @@ body{
     display: flex;
     justify-content: space-between;
 }
+
+.flexCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.map {
+    width: 600px;
+    height: 400px
+}
