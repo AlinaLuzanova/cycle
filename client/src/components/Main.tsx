@@ -2,17 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from '../styles/Main.module.css';
 import RouteCard from "./RouteCard";
 import Spline from '@splinetool/react-spline';
-interface Route {
-    id: number;
-    title: string;
-    description: string;
-    city: string;
-    start: string;
-    finish: string;
-    longway: number;
-    user_id: number;
-    rating: number;
-}
+import Route from '../interfaces/Route';
 
 
 

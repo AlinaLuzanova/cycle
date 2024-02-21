@@ -10,20 +10,8 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
-interface Route {
-    id: number;
-    title: string;
-    city: string;
-    start: string;
-    finish: string;
-    longway: number;
-    rating: number;
-}
-interface User{
-    id:number;
-    login:string;
-}
+import Route from '../interfaces/Route';
+import User from '../interfaces/User';
 
 const RouteCard: React.FC<{ route: Route, user: User }> = ({ route, user }) => {
     const [checked, setChecked] = useState(false);
