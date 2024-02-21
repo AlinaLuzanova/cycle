@@ -2,7 +2,7 @@ import RouteForm from "./components/RouteForm.tsx";
 import { Route, Routes } from "react-router-dom";
 import Main from "./components/Main.tsx";
 import Layout from "./components/Layout.tsx";
-
+import './App.css';
 function App() {
   return (
     <>

@@ -39,7 +39,7 @@ const Main: React.FC = () => {
             <div className={styles.earth}>
                 <Spline scene="https://prod.spline.design/SS9q7mlzF7LmdE8f/scene.splinecode" />
             </div>
-            <h3>explore world with OnRoad</h3>
+            <h2>explore world with OnRoad</h2>
             <div className={styles.content}>
                 <div className={styles.upperContent}>
                     <h3>Find your next adventure!</h3>

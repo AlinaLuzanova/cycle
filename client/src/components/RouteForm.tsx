@@ -58,23 +58,34 @@ const VoyageForm: FC = () => {
         component="form"
         sx={{
           "& .MuiTextField-root": { m: 1, width: "40ch" },
+
         }}
         noValidate
         autoComplete="off"
       >
         <div className={styles.wrapper_form}>
           <TextField
-            onChange={handleChange}
-            sx={{ backgroundColor: "#FFF", borderRadius: "10px" }}
-            id="form_title"
-            label="Title"
-            name="title"
-            value={form.title}
-            variant="standard"
+              onChange={handleChange}
+              sx={{
+                backgroundColor: "#FFF",
+                borderRadius: "5px",
+                paddingInline: '3%',
+                paddingBlock: '1%',
+              }}
+              id="form_title"
+              label="Title"
+              name="title"
+              value={form.title}
+              variant="standard"
           />
           <TextField
             onChange={handleChange}
-            sx={{ backgroundColor: "#FFF", borderRadius: "10px" }}
+            sx={{
+              backgroundColor: "#FFF",
+              borderRadius: "5px",
+              paddingInline: '3%',
+              paddingBlock: '1%',
+            }}
             id="form_city"
             label="City"
             name="city"
@@ -83,7 +94,12 @@ const VoyageForm: FC = () => {
           />
           <TextField
             onChange={handleChange}
-            sx={{ backgroundColor: "#FFF", borderRadius: "10px" }}
+            sx={{
+              backgroundColor: "#FFF",
+              borderRadius: "5px",
+              paddingInline: '3%',
+              paddingBlock: '1%',
+            }}
             id="form_start"
             label="From"
             name="start"
@@ -92,7 +108,12 @@ const VoyageForm: FC = () => {
           />
           <TextField
             onChange={handleChange}
-            sx={{ backgroundColor: "#FFF", borderRadius: "10px" }}
+            sx={{
+              backgroundColor: "#FFF",
+              borderRadius: "5px",
+              paddingInline: '3%',
+              paddingBlock: '1%',
+            }}
             id="form_finish"
             label="To"
             name="finish"
@@ -102,7 +123,12 @@ const VoyageForm: FC = () => {
 
           <TextField
             onChange={handleChange}
-            sx={{ backgroundColor: "#FFF", borderRadius: "10px" }}
+            sx={{
+              backgroundColor: "#FFF",
+              borderRadius: "5px",
+              paddingInline: '3%',
+              paddingBlock: '1%',
+            }}
             id="form_longway"
             label="Distance"
             name="longway"
@@ -113,7 +139,12 @@ const VoyageForm: FC = () => {
           <TextField
             onChange={handleChange}
             id="standard-multiline-flexible"
-            sx={{ backgroundColor: "#FFF", borderRadius: "10px" }}
+            sx={{
+              backgroundColor: "#FFF",
+              borderRadius: "5px",
+              paddingInline: '3%',
+              paddingBlock: '1%',
+            }}
             label="Multiline"
             name="description"
             value={form.description}
