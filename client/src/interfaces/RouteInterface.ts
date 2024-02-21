@@ -1,4 +1,4 @@
-interface Route {
+interface RouteInterface {
     id: number;
     title: string;
     city: string;
@@ -7,4 +7,4 @@ interface Route {
     longway: number;
     rating: number;
 }
-export default Route;
+export default RouteInterface;

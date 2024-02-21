@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import styles from '../styles/Main.module.css';
 import RouteCard from "./RouteCard";
 import Spline from '@splinetool/react-spline';
-import Route from '../interfaces/Route';
+import RouteInterface from '../interfaces/RouteInterface.ts';
 
 
 
 const Main: React.FC = () => {
-    const [data, setData] = useState<Route[]>([]);
+    const [data, setData] = useState<RouteInterface[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:3000/routes");
-                const jsonData: Route[] = await response.json();
+                const jsonData: RouteInterface[] = await response.json();
                 setData(jsonData);
             } catch (error) {
                 console.error('Error fetching data: ', error);
@@ -43,7 +43,7 @@ const Main: React.FC = () => {
                         <ul>
                             {data.map((route) => (
                                 <li key={route.id}>
-                                    <RouteCard route={route} user={{ id: 1, login: 'user' }} />
+                                    <RouteCard route={route} user={{ id: 1, email: 'user' }} />
                                 </li>
                             ))}
                         </ul>
