@@ -1,10 +1,8 @@
 import * as React from "react";
 import { ChangeEvent, FC, FormEvent } from "react";
-
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-
 import styles from "../styles/FormVoyages.module.css";
 
 type FormType = {
@@ -41,50 +39,48 @@ const VoyageForm: FC = () => {
       });
       const res = await data.json();
       if (res.id) {
-        // event.target.reset();
-
         window.location.href = "/";
       }
     } catch (err) {
       console.log(err);
     }
   };
+  document.getElementById("root").style.width = "100%";
 
   return (
-    <>
+    <div className={styles.mainContent}>
       <h3 className={styles.title_form}>Create own route!</h3>
       <Box
         onSubmit={handleSubmitForm}
         component="form"
         sx={{
           "& .MuiTextField-root": { m: 1, width: "40ch" },
-
         }}
         noValidate
         autoComplete="off"
       >
         <div className={styles.wrapper_form}>
           <TextField
-              onChange={handleChange}
-              sx={{
-                backgroundColor: "#FFF",
-                borderRadius: "5px",
-                paddingInline: '3%',
-                paddingBlock: '1%',
-              }}
-              id="form_title"
-              label="Title"
-              name="title"
-              value={form.title}
-              variant="standard"
+            onChange={handleChange}
+            sx={{
+              backgroundColor: "#FFF",
+              borderRadius: "5px",
+              paddingInline: "3%",
+              paddingBlock: "1%",
+            }}
+            id="form_title"
+            label="Title"
+            name="title"
+            value={form.title}
+            variant="standard"
           />
           <TextField
             onChange={handleChange}
             sx={{
               backgroundColor: "#FFF",
               borderRadius: "5px",
-              paddingInline: '3%',
-              paddingBlock: '1%',
+              paddingInline: "3%",
+              paddingBlock: "1%",
             }}
             id="form_city"
             label="City"
@@ -97,8 +93,8 @@ const VoyageForm: FC = () => {
             sx={{
               backgroundColor: "#FFF",
               borderRadius: "5px",
-              paddingInline: '3%',
-              paddingBlock: '1%',
+              paddingInline: "3%",
+              paddingBlock: "1%",
             }}
             id="form_start"
             label="From"
@@ -111,8 +107,8 @@ const VoyageForm: FC = () => {
             sx={{
               backgroundColor: "#FFF",
               borderRadius: "5px",
-              paddingInline: '3%',
-              paddingBlock: '1%',
+              paddingInline: "3%",
+              paddingBlock: "1%",
             }}
             id="form_finish"
             label="To"
@@ -126,8 +122,8 @@ const VoyageForm: FC = () => {
             sx={{
               backgroundColor: "#FFF",
               borderRadius: "5px",
-              paddingInline: '3%',
-              paddingBlock: '1%',
+              paddingInline: "3%",
+              paddingBlock: "1%",
             }}
             id="form_longway"
             label="Distance"
@@ -142,8 +138,8 @@ const VoyageForm: FC = () => {
             sx={{
               backgroundColor: "#FFF",
               borderRadius: "5px",
-              paddingInline: '3%',
-              paddingBlock: '1%',
+              paddingInline: "3%",
+              paddingBlock: "1%",
             }}
             label="Multiline"
             name="description"
@@ -162,7 +158,9 @@ const VoyageForm: FC = () => {
           </Button>
         </div>
       </Box>
-    </>
+      {/* <div id="app" style={{ width: "600px", height: "400px" }}></div> */}
+      {/* <div id="map" style={{ width: "600px", height: "400px" }}></div> */}
+    </div>
   );
 };
 export default VoyageForm;

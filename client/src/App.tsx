@@ -4,6 +4,7 @@ import Main from "./components/Main.tsx";
 import Layout from "./components/Layout.tsx";
 import RouteInfo from "./components/RouteInfo.tsx";
 import "./App.css";
+import Profile from "./components/Profile.tsx";
 function App() {
   return (
     <>
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/createRoute" element={<RouteForm />} />
           <Route path="/routes/:routeId" element={<RouteInfo />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </>

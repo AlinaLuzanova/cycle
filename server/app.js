@@ -18,7 +18,7 @@ app.use('/', indexRouter);
 // app.use('/routes', routesRouter);
 // app.use('/save', saveRouter);
 
-sequelize.authenticate();
+
 
 app.listen(PORT, () => {
   console.log(`*** Server started at ${PORT} port ***`);

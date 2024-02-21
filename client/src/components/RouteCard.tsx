@@ -10,22 +10,10 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import RouteInterface from '../interfaces/RouteInterface.ts';
+import User from '../interfaces/User';
 
-interface Route {
-    id: number;
-    title: string;
-    city: string;
-    start: string;
-    finish: string;
-    longway: number;
-    rating: number;
-}
-interface User{
-    id:number;
-    login:string;
-}
-
-const RouteCard: React.FC<{ route: Route, user: User }> = ({ route, user }) => {
+const RouteCard: React.FC<{ route: RouteInterface, user: User }> = ({ route, user }) => {
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
@@ -97,7 +85,7 @@ const RouteCard: React.FC<{ route: Route, user: User }> = ({ route, user }) => {
                     </div>
                 </CardContent>
                 <CardActions>
-                    <Link to={`/routes/${route.id}`}>Learn More</Link>
+                    <Link style={{color:'rgb(0, 33, 82)'}} to={`/routes/${route.id}`}>Learn More</Link>
                 </CardActions>
             </Card>
         </div>
