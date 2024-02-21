@@ -14,7 +14,6 @@ const app = express();
 const PORT = process.env.PORT ?? 3000;
 serverConfig(app);
 
-
 app.use('/', indexRouter);
 app.use('/routes', routesRouter);
 app.use('/save', saveRouter);
