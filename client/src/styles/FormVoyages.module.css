@@ -1,3 +1,9 @@
+.mainContent {
+  width: 100%;
+  /* display: flex;
+  justify-content: space-between; */
+}
+
 .title_form {
   text-align: center;
   color: #fff;
@@ -10,3 +16,6 @@
   align-items: center;
 }
 
+.full_screen {
+  width: 100%;
+}
