@@ -1,5 +1,6 @@
 import * as React from "react";
 import { ChangeEvent, FC, FormEvent } from "react";
+import type { YMapLocationRequest } from "ymaps3";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -49,6 +50,24 @@ const VoyageForm: FC = () => {
       console.log(err);
     }
   };
+
+  // async function initMap(): Promise<void> {
+  //   await ymaps3.ready;
+
+  //   const LOCATION: YMapLocationRequest = {
+  //     center: [37.623082, 55.75254],
+  //     zoom: 9,
+  //   };
+
+  //   const { YMap, YMapDefaultSchemeLayer } = ymaps3;
+
+  //   const map = new YMap(document.getElementById("app"), {
+  //     location: LOCATION,
+  //   });
+  //   map.addChild(new YMapDefaultSchemeLayer({}));
+  // }
+
+  // initMap();
 
   return (
     <>
@@ -131,6 +150,8 @@ const VoyageForm: FC = () => {
           </Button>
         </div>
       </Box>
+      {/* <div id="app" style={{ width: "600px", height: "400px" }}></div> */}
+      {/* <div id="map" style={{ width: "600px", height: "400px" }}></div> */}
     </>
   );
 };
