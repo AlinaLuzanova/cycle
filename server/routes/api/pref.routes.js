@@ -27,7 +27,7 @@ prefRouter.route('/')
         );
 
         console.log(result);
-        res.status(200).json({ message: 'RouteInterface saved!', result });
+        res.status(200).json({ message: "Find user's preferred routes", result });
       } catch (e) {
         res.status(500).json({ error: 'Internal server error' });
       }
