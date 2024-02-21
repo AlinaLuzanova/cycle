@@ -39,8 +39,6 @@ const VoyageForm: FC = () => {
       });
       const res = await data.json();
       if (res.id) {
-        // event.target.reset();
-
         window.location.href = "/";
       }
     } catch (err) {
@@ -48,24 +46,6 @@ const VoyageForm: FC = () => {
     }
   };
   document.getElementById("root").style.width = "100%";
-  // root.classList.add("full_screen");
-  // async function initMap(): Promise<void> {
-  //   await ymaps3.ready;
-
-  //   const LOCATION: YMapLocationRequest = {
-  //     center: [37.623082, 55.75254],
-  //     zoom: 9,
-  //   };
-
-  //   const { YMap, YMapDefaultSchemeLayer } = ymaps3;
-
-  //   const map = new YMap(document.getElementById("app"), {
-  //     location: LOCATION,
-  //   });
-  //   map.addChild(new YMapDefaultSchemeLayer({}));
-  // }
-
-  // initMap();
 
   return (
     <div className={styles.mainContent}>
