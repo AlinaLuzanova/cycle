@@ -9,6 +9,6 @@ const prefApiRouter = require('./api/pref.routes');
 // router.use('/', mainRouter); // TODO
 // router.use('/auth', authViewRouter); // TODO
 router.use('/api/auth', authApiRouter);
-router.use('/api/pref', prefApiRouter);
+router.use('/pref', prefApiRouter);
 
 module.exports = router;
