@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Main from "./components/Main.tsx";
 import Layout from "./components/Layout.tsx";
 import './App.css';
+import Profile from "./components/Profile.tsx";
 function App() {
   return (
     <>
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Main />} />
           <Route path="/createRoute" element={<RouteForm />} />
+            <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </>
