@@ -17,21 +17,29 @@ import { Link } from "react-router-dom";
 
 interface Page {
   name: string;
-  href: string;
+    link: string;
 }
 
 interface Props {
   user: object;
 }
-
 const pagesBefore: Array<Page> = [
-  { name: "Sign in", href: "/" },
-  { name: "Sign up", href: "/" },
-  { name: "Routes", href: "/" },
-  { name: "Create Route", href: "/createRoute" },
+  { name: "Sign in", link: "/register" },
+  { name: "Sign up", link: "/login" },
+  { name: "Routes", link: "/" },
+  { name: "Create Route", link: "/createRoute" }, //как будет аутентификация убрать это
+    {name:"Profile", link:"/profile"}, //как будет аутентификация убрать это
 ];
-const pagesAfter = ["Routes", "Logout"];
-const settings = ["Profile", "Logout"];
+const pagesAfter : Array<Page> = [
+    { name: "Routes", link: "/" },
+    { name: "Logout", link: "/logout" },
+    { name: "Create Route", link: "/createRoute" }
+]
+
+const settings = [
+    {name: "Profile", link:"/profile"},
+    {name: "Logout", link: "/logout"}
+];
 
 function ResponsiveAppBar(props: Props) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -110,14 +118,15 @@ function ResponsiveAppBar(props: Props) {
               >
                 {props.user
                   ? pagesAfter.map((page) => (
-                      <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
+                      <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                        <Typography textAlign="center">{page.link}</Typography>
+                          <Link to={page.link}>{page.name}</Link>
                       </MenuItem>
                     ))
                   : pagesBefore.map((page) => (
                       <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                         <Typography textAlign="center">
-                          <Link to={page.href}>{page.name}</Link>
+                          <Link to={page.link}>{page.name}</Link>
                         </Typography>
                       </MenuItem>
                     ))}
@@ -149,7 +158,7 @@ function ResponsiveAppBar(props: Props) {
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  <Link to={page.href}>{page.name}</Link>
+                  <Link to={page.link}>{page.name}</Link>
                 </Button>
               ))}
             </Box>
@@ -182,8 +191,9 @@ function ResponsiveAppBar(props: Props) {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.name}</Typography>
+                      <Link to={setting.link}>{setting.name}</Link>
                   </MenuItem>
                 ))}
               </Menu>

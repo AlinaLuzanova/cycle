@@ -4,6 +4,7 @@ import Main from "./components/Main.tsx";
 import Layout from "./components/Layout.tsx";
 import Auth from "./components/Auth.tsx"
 import './App.css';
+import Profile from "./components/Profile.tsx";
 function App() {
   return (
     <>
@@ -11,7 +12,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Main />} />
           <Route path="/createRoute" element={<RouteForm />} />
-          <Route path="/users" element={<Auth/>} />
+            <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </>
