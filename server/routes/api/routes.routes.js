@@ -13,7 +13,9 @@ routesRouter
     }
   })
   .post(async (req, res) => {
-    const { title, city, description, start, finish, longway } = req.body;
+    const {
+      title, city, description, start, finish, longway,
+    } = req.body;
     try {
       if (title && description && start && finish && longway) {
         const routeData = await Route.create({
