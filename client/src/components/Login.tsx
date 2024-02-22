@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //import TextField from "@mui/material/TextField";
-import styles from "../styles/Main.module.css"; 
+import styles from "../styles/AuthForm.module.css";
+import TextField from "@mui/material/TextField";
 
 
 interface LoginFormData {
@@ -45,34 +46,29 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
     }
   };
 
-  return (
+  // @ts-ignore
+    return (
     <div className={styles.main}>
-      <h3 className={styles.title_form}>Authorization</h3>
-      <div className={styles.content}>
-        <div className={styles.mainContent}>
+      <h2 className={styles.title_form}>Authorization</h2>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-
-            <button type="submit"> Sign Up</button>
+              <TextField
+                  name="name"
+                  id="outlined-basic"
+                  label="Name"
+                  variant="outlined"
+                  value={formData.name}
+                  onChange={handleChange} required  />
+              <TextField
+                  name="password"
+                  type="password"
+                  id="outlined-basic"
+                  label="Password"
+                  variant="outlined"
+                  value={formData.password}
+                  onChange={handleChange} required  />
+              <button type="submit"  style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }} > Sign in</button>
           </form>
         </div>
-      </div>
-    </div>
   );
 };
 

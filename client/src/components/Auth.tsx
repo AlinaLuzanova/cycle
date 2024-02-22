@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/Main.module.css";
+import styles from "../styles/AuthForm.module.css";
+import TextField from "@mui/material/TextField";
 
 interface RegisterFormData {
   name: string;
@@ -46,39 +47,35 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
 
   return (
     <div className={styles.main}>
-      <h3 className={styles.title_form}>Registration</h3>
-      <div className={styles.content}>
-        <div className={styles.mainContent}>
+      <h2 className={styles.title_form}>Registration</h2>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit"> Sign Up</button>
+            <TextField
+                name="name"
+                id="outlined-basic"
+                label="Name"
+                variant="outlined"
+                type='text'
+                value={formData.name}
+                onChange={handleChange} required  />
+            <TextField
+                name="email"
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                type='email'
+                value={formData.email}
+                onChange={handleChange} required  />
+            <TextField
+                name="password"
+                type='password'
+                id="outlined-basic"
+                label="Password"
+                variant="outlined"
+                value={formData.password}
+                onChange={handleChange} required  />
+            <button type="submit"  style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }} > Sign Up</button>
           </form>
         </div>
-      </div>
-    </div>
   );
 };
 
