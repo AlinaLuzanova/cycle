@@ -34,6 +34,8 @@ const RegisterForm: FC = () => {
       });
       const resJson = await response.json();
       if (resJson.text === "OK") {
+        console.log(resJson.user);
+        localStorage.setItem("user", resJson.user);
         navigate("/");
       }
     } catch (error) {
@@ -42,39 +44,48 @@ const RegisterForm: FC = () => {
   };
 
   return (
-      <div className={styles.main}>
-        <h2 className={styles.title_form}>Registration</h2>
-        <form onSubmit={handleSubmit}>
-          <TextField
-              name="name"
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-              type='text'
-              value={formData.name}
-              onChange={handleChange} required
-          />
-          <TextField
-              name="email"
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              type='email'
-              value={formData.email}
-              onChange={handleChange} required
-          />
-          <TextField
-              name="password"
-              type='password'
-              id="outlined-basic"
-              label="Password"
-              variant="outlined"
-              value={formData.password}
-              onChange={handleChange} required
-          />
-          <button type="submit"  style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }} > Sign Up</button>
-        </form>
-      </div>
+    <div className={styles.main}>
+      <h2 className={styles.title_form}>Registration</h2>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          name="name"
+          id="outlined-basic"
+          label="Name"
+          variant="outlined"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <TextField
+          name="email"
+          id="outlined-basic"
+          label="Email"
+          variant="outlined"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <TextField
+          name="password"
+          type="password"
+          id="outlined-basic"
+          label="Password"
+          variant="outlined"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <button
+          type="submit"
+          style={{ color: "white", backgroundColor: "rgb(0, 33, 82)" }}
+        >
+          {" "}
+          Sign Up
+        </button>
+      </form>
+    </div>
   );
 };
 
