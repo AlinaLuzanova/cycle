@@ -53,13 +53,13 @@ const RouteInfo: React.FC = () => {
       const map = new mapgl.Map("container", {
         center: [37.668598, 55.76259],
         zoom: 13,
-        key: "f5a825fc-f1fa-4991-b9bc-3b6a344f8508",
+        key: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
       });
 
       const directions = new mapgl.Directions(map, {
         // This key can be used for demo purpose only!
         // You can get your own key on http://partner.api.2gis.ru/
-        directionsApiKey: "f5a825fc-f1fa-4991-b9bc-3b6a344f8508",
+        directionsApiKey: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
       });
       const markers = [];
 
