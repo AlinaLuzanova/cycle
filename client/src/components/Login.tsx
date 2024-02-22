@@ -30,12 +30,21 @@ const LoginForm: FC = () => {
         },
         body: JSON.stringify(formData),
       });
-      //const resJson = await response.json();
-      if (response.status === 200) {
+      const resJson = await response.json();
+      if (resJson.text === "OK") {
+        console.log(resJson.user)
+        localStorage.setItem('user', resJson.user);
+        const userStr = localStorage.getItem('user');
+        if (userStr !== null) {
+          const user = userStr;
+          console.log(user);
+        }
         navigate("/");
+      } else {
+        console.error("Login failed:", resJson);
       }
     } catch (error) {
-      console.error("Error login up:", error);
+      console.error("Error logging in:", error);
     }
   };
 
@@ -45,7 +54,7 @@ const LoginForm: FC = () => {
         <form onSubmit={handleSubmit}>
           <TextField
               name="name"
-              id="outlined-basic"
+              id="name-input"
               label="Name"
               variant="outlined"
               value={formData.name}
@@ -54,7 +63,7 @@ const LoginForm: FC = () => {
           <TextField
               name="password"
               type="password"
-              id="outlined-basic"
+              id="password-input"
               label="Password"
               variant="outlined"
               value={formData.password}

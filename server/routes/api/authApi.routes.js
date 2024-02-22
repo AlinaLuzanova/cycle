@@ -6,7 +6,6 @@ authApiRouter.route('/login').post(async (req, res) => {
   const { name, password } = req.body;
   console.log(name, password);
   try {
-    // Проверим правильность введенных данных ------
     if (password === '' || name === '') {
       return res.status(400).json({ text: '!empty' });
     }
@@ -14,11 +13,13 @@ authApiRouter.route('/login').post(async (req, res) => {
     if (user) {
       const isSame = await bcrypt.compare(password, user.password);
       if (isSame) {
+        console.log(user);
         req.session.userId = user.id;
-        return res.status(200).json({ text: 'OK' });
+        return res.status(200).json({ text: 'OK', user: user.name });
       }
       return res.status(401).json({ text: 'Wrong login!' });
     }
+    return res.status(401).json({ text: 'User not found!' });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -44,7 +45,7 @@ authApiRouter.route('/register').post(async (req, res) => {
     const newUser = await User.create({ ...req.body, password: hash });
     if (newUser.id) {
       req.session.userId = newUser.id;
-      return res.status(201).json({ text: 'OK' });
+      return res.status(201).json({ text: 'OK', user: res.locals.user });
     }
     return res.status(500).json({ error: 'Ошибка создания сессии' });
   } catch (error) {
