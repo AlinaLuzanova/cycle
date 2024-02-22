@@ -1,6 +1,8 @@
-import React, { FC, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "../styles/Main.module.css";
+import React, { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+//import TextField from "@mui/material/TextField";
+import styles from "../styles/Main.module.css"; 
+
 
 interface LoginFormData {
   name: string;
@@ -12,6 +14,7 @@ interface LoginFormProps {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
+
   const [formData, setFormData] = useState<LoginFormData>({
     name: "",
     password: "",
@@ -64,6 +67,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
               onChange={handleChange}
               required
             />
+
             <button type="submit"> Sign Up</button>
           </form>
         </div>
