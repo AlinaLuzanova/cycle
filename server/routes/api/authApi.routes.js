@@ -44,8 +44,9 @@ authApiRouter.route('/register').post(async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, 10);
     const newUser = await User.create({ ...req.body, password: hash });
     if (newUser.id) {
+      console.log(newUser);
       req.session.userId = newUser.id;
-      return res.status(201).json({ text: 'OK', user: res.locals.user });
+      return res.status(201).json({ text: 'OK', user: newUser.name });
     }
     return res.status(500).json({ error: 'Ошибка создания сессии' });
   } catch (error) {
@@ -58,6 +59,7 @@ authApiRouter.route('/logout').get((req, res) => {
     if (error) {
       return res.status(500).json({ error: 'Logout failed' });
     }
+
     return res.clearCookie('leopards_cookies').redirect('/');
   });
 });

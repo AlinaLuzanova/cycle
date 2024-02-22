@@ -104,7 +104,6 @@ const VoyageForm: FC = () => {
     };
     getMap();
   }, []);
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };

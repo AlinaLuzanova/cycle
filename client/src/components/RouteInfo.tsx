@@ -63,6 +63,28 @@ const RouteInfo: React.FC = () => {
       const directions = new mapgl.Directions(map, {
         directionsApiKey: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
       });
+      const markers = [];
+
+      let firstPoint;
+      let secondPoint;
+      // A current selecting point
+      let selecting = "a";
+      const buttonText = ["Choose two points on the map", "Reset points"];
+
+      const controlsHtml = `<button id="reset" disabled>${buttonText[0]}</button> `;
+      new mapgl.Control(map, controlsHtml, {
+        position: "topLeft",
+      });
+      const resetButton = document.getElementById("reset");
+
+      resetButton.addEventListener("click", function () {
+        selecting = "a";
+        firstPoint = undefined;
+        secondPoint = undefined;
+        directions.clear();
+        this.disabled = true;
+        this.textContent = buttonText[0];
+      });
 
       directions.pedestrianRoute({
         points: [JSON.parse(first_point), JSON.parse(second_point)],
