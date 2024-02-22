@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import TextField from "@mui/material/TextField";
 
 interface LoginFormData {
     name: string;
@@ -36,7 +37,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
             if (resJson.text === 'OK') {
                 navigate('/');
             }
-            
+
         } catch (error) {
             console.error('Error login up:', error);
         }
@@ -44,8 +45,8 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
-            <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+            <TextField name="name" id="outlined-basic" label="Name" variant="outlined" value={formData.name} onChange={handleChange} required  />
+            <TextField name="password" type="password" id="outlined-basic" label="Password" variant="outlined" value={formData.password} onChange={handleChange} required  />
             <button type="submit"> Sign Up</button>
         </form>
     );
