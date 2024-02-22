@@ -31,10 +31,12 @@ body{
 .sidebar{
     width: 35%;
     height: inherit;
-
+    max-width: 35%;
     color: black;
 }
 .routesContainer{
+    max-width: 80%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
