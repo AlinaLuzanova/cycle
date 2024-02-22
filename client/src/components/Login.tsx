@@ -1,20 +1,14 @@
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-//import TextField from "@mui/material/TextField";
-import styles from "../styles/Main.module.css"; 
-
+import TextField from "@mui/material/TextField";
+import styles from "../styles/AuthForm.module.css";
 
 interface LoginFormData {
   name: string;
   password: string;
 }
 
-interface LoginFormProps {
-  onSubmit: (formData: LoginFormData) => void;
-}
-
-const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
-
+const LoginForm: FC = () => {
   const [formData, setFormData] = useState<LoginFormData>({
     name: "",
     password: "",
@@ -29,7 +23,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
+      const response = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,41 +32,41 @@ const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
       });
       const resJson = await response.json();
       if (resJson.text === "OK") {
+        console.log(resJson.user)
+        localStorage.setItem('user', resJson.user);
         navigate("/");
+      } else {
+        console.error("Login failed:", resJson);
       }
     } catch (error) {
-      console.error("Error login up:", error);
+      console.error("Error logging in:", error);
     }
   };
 
   return (
-    <div className={styles.main}>
-      <h3 className={styles.title_form}>Authorization</h3>
-      <div className={styles.content}>
-        <div className={styles.mainContent}>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
+      <div className={styles.main}>
+        <h2 className={styles.title_form}>Authorization</h2>
+        <form onSubmit={handleSubmit}>
+          <TextField
               name="name"
-              placeholder="Name"
+              id="name-input"
+              label="Name"
+              variant="outlined"
               value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="password"
+              onChange={handleChange} required
+          />
+          <TextField
               name="password"
-              placeholder="Password"
+              type="password"
+              id="password-input"
+              label="Password"
+              variant="outlined"
               value={formData.password}
-              onChange={handleChange}
-              required
-            />
-
-            <button type="submit"> Sign Up</button>
-          </form>
-        </div>
+              onChange={handleChange} required
+          />
+          <button type="submit"  style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }} >Sign in</button>
+        </form>
       </div>
-    </div>
   );
 };
 

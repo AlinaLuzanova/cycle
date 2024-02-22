@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/Main.module.css";
+import styles from "../styles/AuthForm.module.css";
+import TextField from "@mui/material/TextField";
 
 interface RegisterFormData {
   name: string;
@@ -8,11 +9,7 @@ interface RegisterFormData {
   password: string;
 }
 
-interface RegisterFormProps {
-  onSubmit: (formData: RegisterFormData) => void;
-}
-
-const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
+const RegisterForm: FC = () => {
   const [formData, setFormData] = useState<RegisterFormData>({
     name: "",
     email: "",
@@ -28,7 +25,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,40 +42,39 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className={styles.main}>
-      <h3 className={styles.title_form}>Registration</h3>
-      <div className={styles.content}>
-        <div className={styles.mainContent}>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
+      <div className={styles.main}>
+        <h2 className={styles.title_form}>Registration</h2>
+        <form onSubmit={handleSubmit}>
+          <TextField
               name="name"
-              placeholder="Name"
+              id="outlined-basic"
+              label="Name"
+              variant="outlined"
+              type='text'
               value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
+              onChange={handleChange} required
+          />
+          <TextField
               name="email"
-              placeholder="Email"
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              type='email'
               value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="password"
+              onChange={handleChange} required
+          />
+          <TextField
               name="password"
-              placeholder="Password"
+              type='password'
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
               value={formData.password}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit"> Sign Up</button>
-          </form>
-        </div>
+              onChange={handleChange} required
+          />
+          <button type="submit"  style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }} > Sign Up</button>
+        </form>
       </div>
-    </div>
   );
 };
 

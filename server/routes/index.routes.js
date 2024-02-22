@@ -11,7 +11,7 @@ const startFinishRouter = require('./api/startsAndFinishes');
 const searchRouter = require('./api/search.routes');
 // router.use('/', mainRouter); // TODO
 // router.use('/auth', authViewRouter); // TODO
-router.use('/api/auth', authApiRouter);
+router.use('/', authApiRouter);
 router.use('/routes', routesApi);
 router.use('/pref', prefApiRouter);
 router.use('/cities', citiesRouter);
