@@ -31,7 +31,7 @@ body{
 .sidebar{
     width: 35%;
     height: inherit;
-    background-color: white;
+
     color: black;
 }
 .routesContainer{
@@ -59,7 +59,9 @@ body{
 .routeCard{
     display: flex;
     justify-content: space-between;
+
 }
+
 
 .upperContent{
     width: 100%;

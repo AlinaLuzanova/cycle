@@ -51,7 +51,7 @@ const RouteCard: React.FC<{ route: RouteInterface, user: User }> = ({ route, use
     return (
         <div className={styles.routeCard}>
             <Card sx={{ minWidth: 300, borderRadius: 10, margin: 2, padding: 3, maxWidth: 300 }}>
-                <CardContent>
+                <CardContent className={styles.cardContentUpper}>
                     <div className={styles.cardContainer}>
                         <div>
                             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
@@ -77,7 +77,7 @@ const RouteCard: React.FC<{ route: RouteInterface, user: User }> = ({ route, use
                         </div>
                         <div className={styles.favourite}>
                             {user ? (
-                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} style={{ color: 'red' }} />
+                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} style={{ color: 'red' }} id={styles.fav}/>
                                 ):(
                                 <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} style={{ color: 'red' }} disabled />
                             )}
