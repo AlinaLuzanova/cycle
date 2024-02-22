@@ -20,6 +20,8 @@ interface Route {
   longway: number;
   user_id: number;
   rating: number;
+  first_point: string;
+  second_point: string;
 }
 
 // interface User {
@@ -50,76 +52,24 @@ const RouteInfo: React.FC = () => {
 
   useEffect(() => {
     const getMap = async () => {
+      console.log("======>");
+      const { first_point, second_point } = route;
       const map = new mapgl.Map("container", {
-        center: [37.668598, 55.76259],
+        center: JSON.parse(first_point),
         zoom: 13,
-        key: "f5a825fc-f1fa-4991-b9bc-3b6a344f8508",
+        key: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
       });
 
       const directions = new mapgl.Directions(map, {
-        // This key can be used for demo purpose only!
-        // You can get your own key on http://partner.api.2gis.ru/
-        directionsApiKey: "f5a825fc-f1fa-4991-b9bc-3b6a344f8508",
-      });
-      const markers = [];
-
-      let firstPoint;
-      let secondPoint;
-      // A current selecting point
-      let selecting = "a";
-      const buttonText = ["Choose two points on the map", "Reset points"];
-
-      const controlsHtml = `<button id="reset" disabled>${buttonText[0]}</button> `;
-      new mapgl.Control(map, controlsHtml, {
-        position: "topLeft",
-      });
-      const resetButton = document.getElementById("reset");
-
-      resetButton.addEventListener("click", function () {
-        selecting = "a";
-        firstPoint = undefined;
-        secondPoint = undefined;
-        directions.clear();
-        this.disabled = true;
-        this.textContent = buttonText[0];
+        directionsApiKey: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
       });
 
-      map.on("click", (e) => {
-        const coords = e.lngLat;
-
-        if (selecting != "end") {
-          // Just to visualize selected points, before the route is done
-          markers.push(
-            new mapgl.Marker(map, {
-              coordinates: coords,
-              icon: "https://docs.2gis.com/img/dotMarker.svg",
-            })
-          );
-        }
-
-        if (selecting === "a") {
-          firstPoint = coords;
-          selecting = "b";
-        } else if (selecting === "b") {
-          secondPoint = coords;
-          selecting = "end";
-        }
-
-        // If all points are selected — we can draw the route
-        if (firstPoint && secondPoint) {
-          directions.pedestrianRoute({
-            points: [firstPoint, secondPoint],
-          });
-          markers.forEach((m) => {
-            m.destroy();
-          });
-          resetButton.disabled = false;
-          resetButton.textContent = buttonText[1];
-        }
+      directions.pedestrianRoute({
+        points: [JSON.parse(first_point), JSON.parse(second_point)],
       });
     };
     getMap();
-  }, []);
+  }, [route]);
 
   return (
     <>
