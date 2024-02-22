@@ -24,6 +24,7 @@ body{
     height: fit-content;
     padding-bottom: 10%;
 }
+
 .mainContent{
     width: 100%;
     display: flex;
