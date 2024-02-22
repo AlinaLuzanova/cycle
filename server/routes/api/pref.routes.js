@@ -1,17 +1,9 @@
 const prefRouter = require('express').Router();
-const { UserRoute, Route } = require('../../db/models');
+const { UserRoute, Route, User } = require('../../db/models');
 
 prefRouter.route('/')
   .get(async (req, res) => {
-    // const { id } = req.params;
-
-    // -------------------------------------------
-    // !!! Mock-data
-    res.locals.user = { id: 1 };
-    // -------------------------------------------
-
-    const { user } = res.locals;
-
+   const user = await User.findByPk(req.session.userId);
     if (user) {
       try {
         const result = await UserRoute.findAll(
@@ -25,7 +17,6 @@ prefRouter.route('/')
             }],
           },
         );
-
         console.log(result);
         res.status(200).json({ message: "Find user's preferred routes", result });
       } catch (e) {

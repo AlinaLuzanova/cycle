@@ -34,11 +34,6 @@ const LoginForm: FC = () => {
       if (resJson.text === "OK") {
         console.log(resJson.user)
         localStorage.setItem('user', resJson.user);
-        const userStr = localStorage.getItem('user');
-        if (userStr !== null) {
-          const user = userStr;
-          console.log(user);
-        }
         navigate("/");
       } else {
         console.error("Login failed:", resJson);
