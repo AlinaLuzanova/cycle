@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import RouteCard from "./RouteCard.tsx";
+import RouteCard from "./RouteCard";
 import RouteInterface from "../interfaces/RouteInterface.ts";
+//import User from "../interfaces/User";
+import styles from "../styles/Main.module.css";
 
-interface ProfileProps {
-  user: string; // Ожидаем строку в качестве пропса user
-}
-
-const Profile: React.FC<ProfileProps> = ({ user }) => {
+const Profile: React.FC<{ user: string }> = ({ user }) => {
   const [data, setData] = useState<RouteInterface[]>([]);
 
   useEffect(() => {
@@ -33,8 +31,7 @@ const Profile: React.FC<ProfileProps> = ({ user }) => {
           <ul>
             {data.map((route) => (
               <li key={route.id}>
-                <RouteCard route={route} user={{ id: 1, email: user }} />{" "}
-                {/* Передаем user как email в объекте */}
+                <RouteCard route={route} user={user} />
               </li>
             ))}
           </ul>

@@ -35,6 +35,7 @@ const LoginForm: FC = () => {
         console.log(resJson.user);
         localStorage.setItem("user", resJson.user);
         navigate("/");
+        window.location.reload();
       } else {
         console.error("Login failed:", resJson);
       }

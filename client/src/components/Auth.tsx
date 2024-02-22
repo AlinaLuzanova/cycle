@@ -37,6 +37,8 @@ const RegisterForm: FC = () => {
         console.log(resJson.user);
         localStorage.setItem("user", resJson.user);
         navigate("/");
+        window.location.reload();
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error signing up:", error);
