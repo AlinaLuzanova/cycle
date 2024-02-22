@@ -11,7 +11,11 @@ interface SearchParams {
     distance: number;
 }
 
-const SideBar: React.FC = () => {
+interface SideBarProps {
+    onSubmit: (formData: SearchParams) => void;
+}
+
+const SideBar: React.FC<SideBarProps> = ({ onSubmit }) => {
     const [formData, setFormData] = useState<SearchParams>({
         city: '',
         start: '',
@@ -36,25 +40,8 @@ const SideBar: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:3000/search', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            const resJson = await response.json();
-            if (resJson.text === 'OK') {
-                // Успешно
-            }
-
-        } catch (error) {
-            console.error(error);
-        }
+        onSubmit(formData); // Вызываем функцию обратного вызова onSubmit и передаем ей данные формы
     };
-
-
 
     const [cities, setCities] = useState<RouteInterface[]>([]);
 
@@ -88,7 +75,6 @@ const SideBar: React.FC = () => {
             console.error('Error fetching starts and finishes: ', error);
         }
     };
-
 
     return (
         <div className="sidebar">
