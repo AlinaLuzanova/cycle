@@ -3,7 +3,7 @@ import styles from '../styles/Main.module.css';
 import RouteCard from "./RouteCard";
 import Spline from '@splinetool/react-spline';
 import RouteInterface from '../interfaces/RouteInterface.ts';
-
+import SideBar from './SideBar';
 
 
 const Main: React.FC = () => {
@@ -37,7 +37,7 @@ const Main: React.FC = () => {
                 </div>
                 <div className={styles.mainContent}>
                     <div className={styles.sidebar}>
-                        часть Олега
+                       <SideBar/>
                     </div>
                     <div className={styles.routesContainer}>
                         <ul>
