@@ -5,15 +5,15 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
+//import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+//import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import styles from "../styles/Header.module.css";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 interface Page {
   name: string;
@@ -45,6 +45,14 @@ const ResponsiveAppBar: FC<Props> = ({ user }) => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+  const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate("/");
+        window.location.reload();
+    };
+
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -81,7 +89,7 @@ const ResponsiveAppBar: FC<Props> = ({ user }) => {
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {user
                 ? pagesAfter.map((page) => (
-                    <MenuItem key={page.name} onClick={handleCloseUserMenu}>
+                    <MenuItem key={page.name} onClick={page.name === "LOGOUT" ? handleLogout : handleCloseUserMenu}>
                       <Link to={page.link}>{page.name}</Link>
                     </MenuItem>
                   ))
@@ -120,7 +128,7 @@ const ResponsiveAppBar: FC<Props> = ({ user }) => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting.name} onClick={setting.name === "Logout" ? handleLogout : handleCloseUserMenu}>
                     <Typography textAlign="center">{setting.name}</Typography>
                     <Link to={setting.link}>{setting.name}</Link>
                   </MenuItem>

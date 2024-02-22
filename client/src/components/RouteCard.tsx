@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -9,18 +9,16 @@ import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import RouteInterface from '../interfaces/RouteInterface.ts';
-import User from '../interfaces/User';
 
-const RouteCard: React.FC<{ route: RouteInterface, user: User }> = ({ route, user }) => {
+const RouteCard: React.FC<{ route: RouteInterface, user: string }> = ({ route, user }) => {
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = checked
-                    ? await fetch(`/save/${route.id}`, {
+                    ? await fetch(`http://localhost:3000/routes/${route.id}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -28,7 +26,7 @@ const RouteCard: React.FC<{ route: RouteInterface, user: User }> = ({ route, use
                         },
                         body: JSON.stringify({ route: route.id }),
                     })
-                    : await fetch(`/save/${route.id}`, {
+                    : await fetch(`http://localhost:3000/routes/${route.id}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
@@ -77,15 +75,26 @@ const RouteCard: React.FC<{ route: RouteInterface, user: User }> = ({ route, use
                         </div>
                         <div className={styles.favourite}>
                             {user ? (
-                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} style={{ color: 'red' }} id={styles.fav}/>
-                                ):(
-                                <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} style={{ color: 'red' }} disabled />
+                                <Checkbox
+                                    icon={<FavoriteBorder />}
+                                    checkedIcon={<Favorite />}
+                                    style={{ color: 'red' }}
+                                    id={styles.fav}
+                                    onClick={() => setChecked(!checked)}
+                                />
+                            ) : (
+                                <Checkbox
+                                    icon={<FavoriteBorder />}
+                                    checkedIcon={<Favorite />}
+                                    style={{ color: 'red' }}
+                                    disabled
+                                />
                             )}
                         </div>
                     </div>
                 </CardContent>
                 <CardActions>
-                    <Link style={{color:'rgb(0, 33, 82)'}} to={`/routes/${route.id}`}>Learn More</Link>
+                    <Link style={{ color: 'rgb(0, 33, 82)' }} to={`/routes/${route.id}`}>Learn More</Link>
                 </CardActions>
             </Card>
         </div>

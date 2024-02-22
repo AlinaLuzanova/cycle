@@ -9,7 +9,7 @@ const resLocals = (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   if (req.session.userId) {
-    const user = await User.findByPk(req.session.userId);
+    const user = await User.findByPk(+req.session.userId);
     if (user.id) {
       res.locals.user = user;
     } else {

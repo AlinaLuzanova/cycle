@@ -23,7 +23,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main user = {user} />} />
           <Route path="/createRoute" element={<RouteForm />} />
           <Route path="/routes/:routeId" element={<RouteInfo />} />
           <Route path="/profile" element={<Profile user = {user} />} />

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Main.module.css";
 import RouteCard from "./RouteCard";
 import Spline from "@splinetool/react-spline";
-import RouteInterface from "../interfaces/RouteInterface.ts";
+import RouteInterface from "../interfaces/RouteInterface";
 import SideBar from "./SideBar";
-
+//import User from "../interfaces/User";
 interface SearchParams {
   city: string;
   start: string;
@@ -12,7 +12,8 @@ interface SearchParams {
   distance: number;
 }
 
-const Main: React.FC = () => {
+
+const Main: React.FC<{user: string}> = ({ user }) => {
   const [data, setData] = useState<RouteInterface[]>([]);
   const [searchResult, setSearchResult] = useState<RouteInterface[]>([]);
 
@@ -81,7 +82,7 @@ const Main: React.FC = () => {
                     <li key={route.id}>
                       <RouteCard
                         route={route}
-                        user={{ id: 1, email: "user" }}
+                        user={user}
                       />
                     </li>
                   ))
@@ -89,7 +90,7 @@ const Main: React.FC = () => {
                     <li key={route.id}>
                       <RouteCard
                         route={route}
-                        user={{ id: 1, email: "user" }}
+                        user={user}
                       />
                     </li>
                   ))}
