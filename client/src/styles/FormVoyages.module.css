@@ -31,3 +31,8 @@ body {
 .full_screen {
   width: 100%;
 }
+
+.map {
+  width: 600px;
+  height: 400px
+}

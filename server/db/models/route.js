@@ -52,12 +52,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
+      first_point: {
+        type: DataTypes.STRING,
+      },
+      second_point: {
+        type: DataTypes.STRING,
+      },
     },
     {
       sequelize,
       modelName: 'Route',
       tableName: 'Routes',
-    },
+    }
   );
   return Route;
 };

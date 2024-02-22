@@ -13,7 +13,16 @@ routesRouter
     }
   })
   .post(async (req, res) => {
-    const { title, city, description, start, finish, longway } = req.body;
+    const {
+      title,
+      city,
+      description,
+      start,
+      finish,
+      longway,
+      firstPoint,
+      secondPoint,
+    } = req.body;
     try {
       if (title && description && start && finish && longway) {
         const routeData = await Route.create({
@@ -25,6 +34,8 @@ routesRouter
           longway,
           user_id: null,
           rating: 0,
+          first_point: firstPoint,
+          second_point: secondPoint,
         });
         if (routeData.id) {
           return res.json(routeData);
