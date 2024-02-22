@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import RouteInterface from "../interfaces/RouteInterface.ts";
-
+import styles from '../styles/SideBar.module.css';
 interface SearchParams {
     city: string;
     start: string;
@@ -77,10 +77,10 @@ const SideBar: React.FC<SideBarProps> = ({ onSubmit }) => {
     };
 
     return (
-        <div className="sidebar">
+        <div className={styles.sidebar}>
             <form onSubmit={handleSubmit}>
                 <Autocomplete
-                    sx={{ backgroundColor: 'white' }}
+                    sx={{ backgroundColor: 'white'}}
                     disablePortal
                     id="combo-box-demo"
                     options={cities}
@@ -107,8 +107,10 @@ const SideBar: React.FC<SideBarProps> = ({ onSubmit }) => {
                     onChange={(_, newValue) => setFormData({ ...formData, finish: newValue || '' })}
                     renderInput={(params) => <TextField {...params} name="finish" label="Finish" />}
                 />
-                <input type="text" name="distance" placeholder="Distance" value={formData.distance} onChange={handleChange} />
-                <button type="submit">Search</button>
+                <TextField id="outlined-basic" name="distance" label="Distance" variant="outlined"  onChange={handleChange} />
+               <button
+                   style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }}
+                   type="submit">Search</button>
             </form>
         </div>
     );
