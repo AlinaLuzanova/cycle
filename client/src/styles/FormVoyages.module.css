@@ -28,11 +28,15 @@ body {
   align-items: center;
 }
 
-.full_screen {
-  width: 100%;
+.wrapper_form > * {
+  padding: 3%;
+}
+
+.wrapper_form > div > label {
+  margin-left: 10px;
 }
 
 .map {
   width: 600px;
-  height: 400px
+  height: 400px;
 }

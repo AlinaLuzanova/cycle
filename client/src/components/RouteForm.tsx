@@ -23,7 +23,7 @@ const VoyageForm: FC = () => {
     city: "",
     start: "",
     finish: "",
-    longway: 0,
+    longway: null,
   });
 
   const [firstPoint, setFirstPoint] = useState<string>("");
@@ -128,7 +128,7 @@ const VoyageForm: FC = () => {
   };
 
   return (
-    <div className={styles.main}>
+    <>
       <h3 className={styles.title_form}>Create own route!</h3>
       <div className={styles.content}>
         <div className={styles.mainContent}>
@@ -246,7 +246,7 @@ const VoyageForm: FC = () => {
           </Box>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default VoyageForm;
