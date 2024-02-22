@@ -4,17 +4,16 @@ const { User } = require('../../db/models/index');
 
 authApiRouter.route('/login').post(async (req, res) => {
   const { name, password } = req.body;
-
+  console.log(name, password);
   try {
     // Проверим правильность введенных данных ------
     if (password === '' || name === '') {
       return res.status(400).json({ text: '!empty' });
     }
-    //-------------------------
     const user = await User.findOne({ where: { name } });
     if (user) {
       const isSame = await bcrypt.compare(password, user.password);
-      if (isSame !== null) {
+      if (isSame) {
         req.session.userId = user.id;
         return res.status(200).json({ text: 'OK' });
       }
@@ -29,7 +28,6 @@ authApiRouter.route('/register').post(async (req, res) => {
   const { name, email, password } = req.body;
   console.log(name, email, password);
   try {
-    // Проверим правильность введенных данных ------
     if (name === '' || email === '' || password === '') {
       return res.status(400).json({ text: '!empty' });
     }
@@ -42,7 +40,6 @@ authApiRouter.route('/register').post(async (req, res) => {
     if (emailDB) {
       return res.status(400).json({ text: '!email' });
     }
-    //--------------------------
     const hash = await bcrypt.hash(req.body.password, 10);
     const newUser = await User.create({ ...req.body, password: hash });
     if (newUser.id) {

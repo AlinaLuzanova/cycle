@@ -9,11 +9,7 @@ interface RegisterFormData {
   password: string;
 }
 
-interface RegisterFormProps {
-  onSubmit: (formData: RegisterFormData) => void;
-}
-
-const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
+const RegisterForm: FC = () => {
   const [formData, setFormData] = useState<RegisterFormData>({
     name: "",
     email: "",
@@ -29,7 +25,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch("http://localhost:3000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,36 +42,39 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className={styles.main}>
-      <h2 className={styles.title_form}>Registration</h2>
-          <form onSubmit={handleSubmit}>
-            <TextField
-                name="name"
-                id="outlined-basic"
-                label="Name"
-                variant="outlined"
-                type='text'
-                value={formData.name}
-                onChange={handleChange} required  />
-            <TextField
-                name="email"
-                id="outlined-basic"
-                label="Email"
-                variant="outlined"
-                type='email'
-                value={formData.email}
-                onChange={handleChange} required  />
-            <TextField
-                name="password"
-                type='password'
-                id="outlined-basic"
-                label="Password"
-                variant="outlined"
-                value={formData.password}
-                onChange={handleChange} required  />
-            <button type="submit"  style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }} > Sign Up</button>
-          </form>
-        </div>
+      <div className={styles.main}>
+        <h2 className={styles.title_form}>Registration</h2>
+        <form onSubmit={handleSubmit}>
+          <TextField
+              name="name"
+              id="outlined-basic"
+              label="Name"
+              variant="outlined"
+              type='text'
+              value={formData.name}
+              onChange={handleChange} required
+          />
+          <TextField
+              name="email"
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              type='email'
+              value={formData.email}
+              onChange={handleChange} required
+          />
+          <TextField
+              name="password"
+              type='password'
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              value={formData.password}
+              onChange={handleChange} required
+          />
+          <button type="submit"  style={{ color: 'white', backgroundColor: 'rgb(0, 33, 82)' }} > Sign Up</button>
+        </form>
+      </div>
   );
 };
 

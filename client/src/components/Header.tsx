@@ -32,13 +32,13 @@ const pagesBefore: Array<Page> = [
 ];
 const pagesAfter : Array<Page> = [
     { name: "Routes", link: "/" },
-    { name: "Logout", link: "/api/auth/logout" },
+    { name: "Logout", link: "/logout" },
     { name: "Create Route", link: "/createRoute" }
 ]
 
 const settings = [
     {name: "Profile", link:"/profile"},
-    {name: "Logout", link: "/api/auth/logout"}
+    {name: "Logout", link: "/logout"}
 ];
 
 function ResponsiveAppBar(props: Props) {
