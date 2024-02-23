@@ -34,12 +34,11 @@ const VoyageForm: FC = () => {
       const map = new mapgl.Map("container", {
         center: [37.668598, 55.76259],
         zoom: 13,
-        key: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
+        key: import.meta.env.VITE_API_KEY,
       });
 
       const directions = new mapgl.Directions(map, {
-        // f5a825fc-f1fa-4991-b9bc-3b6a344f8508
-        directionsApiKey: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
+        directionsApiKey: import.meta.env.VITE_API_KEY,
       });
       const markers = [];
 
