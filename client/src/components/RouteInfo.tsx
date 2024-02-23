@@ -37,7 +37,6 @@ const RouteInfo: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3000/routes/${routeId}`);
-
         if (response.ok) {
           const jsonData: Route = await response.json();
           setRoute(jsonData);
@@ -46,51 +45,29 @@ const RouteInfo: React.FC = () => {
         console.error("Error:", error);
       }
     };
-
     fetchData();
-  }, []);
+  }, [routeId]);
 
   useEffect(() => {
     const getMap = async () => {
-      console.log("======>");
       const { first_point, second_point } = route;
       const map = new mapgl.Map("container", {
         center: JSON.parse(first_point),
         zoom: 13,
-        key: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
+        key: import.meta.env.VITE_API_KEY,
       });
 
       const directions = new mapgl.Directions(map, {
-        directionsApiKey: "7e7fd46b-03ab-48d0-8fc4-3332f9dbb216",
-      });
-      const markers = [];
-
-      let firstPoint;
-      let secondPoint;
-      // A current selecting point
-      let selecting = "a";
-      const buttonText = ["Choose two points on the map", "Reset points"];
-
-      const controlsHtml = `<button id="reset" disabled>${buttonText[0]}</button> `;
-      new mapgl.Control(map, controlsHtml, {
-        position: "topLeft",
-      });
-      const resetButton = document.getElementById("reset");
-
-      resetButton.addEventListener("click", function () {
-        selecting = "a";
-        firstPoint = undefined;
-        secondPoint = undefined;
-        directions.clear();
-        this.disabled = true;
-        this.textContent = buttonText[0];
+        directionsApiKey: import.meta.env.VITE_API_KEY,
       });
 
       directions.pedestrianRoute({
         points: [JSON.parse(first_point), JSON.parse(second_point)],
       });
     };
-    getMap();
+    if (route) {
+      getMap();
+    }
   }, [route]);
 
   return (
