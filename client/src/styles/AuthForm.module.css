@@ -16,3 +16,10 @@
   width: 90%;
   margin: 5%;
 }
+
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
