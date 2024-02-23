@@ -12,8 +12,7 @@ interface SearchParams {
   distance: number;
 }
 
-
-const Main: React.FC<{user: string}> = ({ user }) => {
+const Main: React.FC<{ user: string }> = ({ user }) => {
   const [data, setData] = useState<RouteInterface[]>([]);
   const [searchResult, setSearchResult] = useState<RouteInterface[]>([]);
 
@@ -54,7 +53,7 @@ const Main: React.FC<{user: string}> = ({ user }) => {
   };
 
   return (
-    <>
+    <div className={styles.main}>
       <h1>Our latest routes</h1>
       <div className={styles.earth}>
         <Spline scene="https://prod.spline.design/SS9q7mlzF7LmdE8f/scene.splinecode" />
@@ -80,25 +79,19 @@ const Main: React.FC<{user: string}> = ({ user }) => {
               {searchResult.length > 0
                 ? searchResult.map((route) => (
                     <li key={route.id}>
-                      <RouteCard
-                        route={route}
-                        user={user}
-                      />
+                      <RouteCard route={route} user={user} />
                     </li>
                   ))
                 : data.map((route) => (
                     <li key={route.id}>
-                      <RouteCard
-                        route={route}
-                        user={user}
-                      />
+                      <RouteCard route={route} user={user} />
                     </li>
                   ))}
             </ul>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -15,13 +15,13 @@ const Layout: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.mainWrapper}>
+    <>
       <ResponsiveAppBar user={user} />
       <div className={styles.main}>
         <Outlet />
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
