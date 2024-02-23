@@ -22,7 +22,7 @@ const Profile: React.FC<{ user: string }> = ({ user }) => {
   }, []);
   if (user) {
     return (
-      <>
+      <div className={styles.mainWrapper}>
         <h1>{user}'s Profile</h1>
         <h3>
           This is your profile. Here you can store some paths that you like.
@@ -36,7 +36,7 @@ const Profile: React.FC<{ user: string }> = ({ user }) => {
             ))}
           </ul>
         </div>
-      </>
+      </div>
     );
   }
 };

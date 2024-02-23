@@ -71,7 +71,7 @@ const RouteInfo: React.FC = () => {
   }, [route]);
 
   return (
-    <>
+    <div className={styles.mainWrapper}>
       <div className={styles.flexCard}>
         <Card
           sx={{
@@ -137,7 +137,7 @@ const RouteInfo: React.FC = () => {
         </Card>
         <div id="container" className={styles.map}></div>
       </div>
-    </>
+    </div>
   );
 };
 

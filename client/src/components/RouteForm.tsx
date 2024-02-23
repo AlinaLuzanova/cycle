@@ -127,7 +127,7 @@ const VoyageForm: FC = () => {
   };
 
   return (
-    <>
+    <div className={styles.mainWrapper}>
       <h3 className={styles.title_form}>Create own route!</h3>
       <div className={styles.content}>
         <div className={styles.mainContent}>
@@ -152,6 +152,7 @@ const VoyageForm: FC = () => {
                   paddingInline: "3%",
                   paddingBlock: "1%",
                 }}
+                required
                 id="form_title"
                 label="Title"
                 name="title"
@@ -166,6 +167,7 @@ const VoyageForm: FC = () => {
                   paddingInline: "3%",
                   paddingBlock: "1%",
                 }}
+                required
                 id="form_city"
                 label="City"
                 name="city"
@@ -180,6 +182,7 @@ const VoyageForm: FC = () => {
                   paddingInline: "3%",
                   paddingBlock: "1%",
                 }}
+                required
                 id="form_start"
                 label="From"
                 name="start"
@@ -194,6 +197,7 @@ const VoyageForm: FC = () => {
                   paddingInline: "3%",
                   paddingBlock: "1%",
                 }}
+                required
                 id="form_finish"
                 label="To"
                 name="finish"
@@ -209,6 +213,7 @@ const VoyageForm: FC = () => {
                   paddingInline: "3%",
                   paddingBlock: "1%",
                 }}
+                required
                 id="form_longway"
                 label="Distance"
                 name="longway"
@@ -225,6 +230,7 @@ const VoyageForm: FC = () => {
                   paddingInline: "3%",
                   paddingBlock: "1%",
                 }}
+                required
                 label="Multiline"
                 name="description"
                 value={form.description}
@@ -245,7 +251,7 @@ const VoyageForm: FC = () => {
           </Box>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default VoyageForm;

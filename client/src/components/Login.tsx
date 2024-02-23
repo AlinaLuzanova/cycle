@@ -45,35 +45,37 @@ const LoginForm: FC = () => {
   };
 
   return (
-    <div className={styles.main}>
-      <h2 className={styles.title_form}>Authorization</h2>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          name="name"
-          id="name-input"
-          label="Name"
-          variant="outlined"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <TextField
-          name="password"
-          type="password"
-          id="password-input"
-          label="Password"
-          variant="outlined"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button
-          type="submit"
-          style={{ color: "white", backgroundColor: "rgb(0, 33, 82)" }}
-        >
-          Sign in
-        </button>
-      </form>
+    <div className={styles.mainWrapper}>
+      <div className={styles.main}>
+        <h2 className={styles.title_form}>Authorization</h2>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            name="name"
+            id="name-input"
+            label="Name"
+            variant="outlined"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <TextField
+            name="password"
+            type="password"
+            id="password-input"
+            label="Password"
+            variant="outlined"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button
+            type="submit"
+            style={{ color: "white", backgroundColor: "rgb(0, 33, 82)" }}
+          >
+            Sign in
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
